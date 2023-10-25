@@ -9,6 +9,11 @@ function App() {
   const [yourPer, setYourper] = useState(0);
   const [friPer, setFriper] = useState(0);
   const tip = bill * ((yourPer + friPer) / 2 / 100);
+  function handleReset() {
+    setBill("");
+    yourPer(0);
+    friPer(0);
+  }
   return (
     <div className="App">
       <BillInput bill={bill} onSetbill={setBill} />
@@ -19,8 +24,12 @@ function App() {
         How did your Friend like the service ?
       </SelectPercentage>
 
-      <Output bill={bill} tip={tip} />
-      <Reset />
+      {bill > 0 && (
+        <>
+          <Output bill={bill} tip={tip} />
+          <Reset onReset={handleReset} />
+        </>
+      )}
     </div>
   );
 }

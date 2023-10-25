@@ -1,9 +1,9 @@
 import React from "react";
 
-const Reset = () => {
+const Reset = ({ onReset }) => {
   return (
     <div>
-      <button>Reset</button>
+      <button onClick={onReset}>Reset</button>;
     </div>
   );
 };
